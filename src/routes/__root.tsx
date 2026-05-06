@@ -1,9 +1,8 @@
-import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
+import { Outlet, Link, createRootRoute } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { NaadhamChatbot } from "@/components/NaadhamChatbot";
 import { ScrollProgress } from "@/components/ScrollProgress";
-import appCss from "../styles.css?url";
 
 function NotFoundComponent() {
   return (
@@ -21,34 +20,9 @@ function NotFoundComponent() {
 }
 
 export const Route = createRootRoute({
-  head: () => ({
-    meta: [
-      { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Sri Vishwa Naadham — Music & Fine Arts Academy" },
-      { name: "description", content: "Premier music & fine arts academy in Chennai. Carnatic vocal, keyboard, guitar, violin, flute, drawing, painting & more. Where Talent Meets Tradition." },
-      { property: "og:title", content: "Sri Vishwa Naadham — Music & Fine Arts Academy" },
-      { property: "og:description", content: "Where Talent Meets Tradition — premier music & fine arts academy in Chennai." },
-      { property: "og:type", content: "website" },
-    ],
-    links: [{ rel: "stylesheet", href: appCss }],
-  }),
-  shellComponent: RootShell,
   component: RootComponent,
   notFoundComponent: NotFoundComponent,
 });
-
-function RootShell({ children }: { children: React.ReactNode }) {
-  return (
-    <html lang="en">
-      <head><HeadContent /></head>
-      <body>
-        {children}
-        <Scripts />
-      </body>
-    </html>
-  );
-}
 
 function RootComponent() {
   return (
